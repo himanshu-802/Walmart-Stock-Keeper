@@ -65,6 +65,7 @@ app.use(userRoutes);
 app.use(adminRoutes);
 
 
-app.listen(process.env.PORT, ()=>{
-  //  console.log('Server is started');
+
+app.listen(process.env.PORT, ()=> {
+    console.log('Server is started');
 });
