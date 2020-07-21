@@ -86,7 +86,11 @@ router.get('/edit/:id',(req,res)=>{
         res.render('./users/edituser',{user:user});
     })
     .catch(function (err){
-        console.log(err);
+        
+        req.flash('error_msg', 'ERROR: '+err);
+        res.redirect('/user/edituser',{user:''});
+        
+        //console.log(err);
     })
 
 })
@@ -109,8 +113,8 @@ router.post('/signup',(req, res) => {
     };
     User.register(userData, password, (err, user) => {
         if (err) {
-            console.log(err.name);
-            console.log(err.message);
+    //        console.log(err.name);
+      //      console.log(err.message);
             req.flash('error_msg', 'ERROR: ' + err);
             res.redirect('/signup');
         }

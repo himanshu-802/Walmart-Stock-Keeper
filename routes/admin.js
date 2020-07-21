@@ -72,7 +72,7 @@ async function scrapeData(url, page) {
 
     }
     catch (error) {
-        console.log(error);
+       // console.log(error);
     }
 };
 
@@ -271,7 +271,7 @@ router.post('/update', isAuthenticatedUser, async(req, res)=>{
                         .then(products => {})
                 }
 
-                browser = await puppeteer.launch({ headless:false });
+                browser = await puppeteer.launch({ args: ['--no-sandbox'] });
                 const page = await browser.newPage();
 
                 for(let i=0; i<products.length; i++) {
