@@ -28,7 +28,7 @@ mongoose.connect(process.env.DATABASE, {
 }).then(function (conn){
     console.log('Database connected successfully');
 })
-// ******** middleware for session *******
+// ********** middleware for session *******
 app.use(sesssion({
     secret : 'Just a simple login/signup application',
     resave: true,
