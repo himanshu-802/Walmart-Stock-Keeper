@@ -10,5 +10,6 @@ let productScheme= new mongoose.Schema({
     company:String,
     url:String,
     updatestatus:String
+    
 });
 module.exports= mongoose.model('product',productScheme);

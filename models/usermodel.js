@@ -10,6 +10,7 @@ let userSchema = new mongoose.Schema({
     },
     resetPasswordToken: String,
     resetPasswordExpires: Date
+    
 });
 
 userSchema.plugin(passportLocalMongoose ,{usernameField:'email'});
