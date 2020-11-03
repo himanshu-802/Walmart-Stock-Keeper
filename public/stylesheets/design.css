@@ -44,7 +44,7 @@ a:focus{
 }
 #sidebar ul.components{
 	padding: 20px 0px;
-	border-bottom: 1px solid #292b2c ;
+	border-bottom: 1px white ;
 }
 
 #sidebar ul li a{

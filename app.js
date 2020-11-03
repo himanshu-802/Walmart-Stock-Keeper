@@ -14,8 +14,10 @@ const LocalStrategy = require('passport-local').Strategy;
 //Requiring user and admin route
 
 const adminRoutes = require('./routes/admin');
+app.use(adminRoutes);
 
 const userRoutes = require('./routes/users');
+app.use(userRoutes);
 
 // Requiring user model
 const User = require('./models/usermodel');
@@ -28,7 +30,9 @@ mongoose.connect(process.env.DATABASE, {
 }).then(function (conn){
     console.log('Database connected successfully');
 })
+
 // ********** middleware for session *******
+
 app.use(sesssion({
     secret : 'Just a simple login/signup application',
     resave: true,
@@ -47,8 +51,11 @@ passport.deserializeUser(User.deserializeUser());
 app.use(methdoOverride('_method'));
 
 // middleware for flash messages
+
 app.use(flash());
+
 // setting middleware globally 
+
 app.use((req,res,next)=>{
     res.locals.success_msg = req.flash(('success_msg'));
     res.locals.error_msg = req.flash(('error_msg'));
@@ -61,9 +68,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 app.use(express.static('public'));
-app.use(userRoutes);
-app.use(adminRoutes);
-
 
 
 app.listen(process.env.PORT, ()=> {
